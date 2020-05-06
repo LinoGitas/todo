@@ -1,39 +1,82 @@
 /*
+
+String.prototype.toAlternatingCase = function () {
+    let text = '';
+
+    for (let i=0; i<this.length; i++) {
+        let letters = this[i];
+        
+        
+        if (letters === letters.toLowerCase() )
+        {
+            // jei raide mazoji
+            text = text + letters.toUpperCase();        
+        }
+        else{
+            // jei raide didzioji
+            text = text + letters.toLowerCase();
+        }
+    }
+    //console.log(text);
+    return text;
+
+    
+}
+
+console.log("Linas".toAlternatingCase() === "lINAS");
+
+
+String.prototype.firstLetter = function () {
+    console.log( this );
+    return this[0];
+}
+
+console.log( 'afghfgxcvb'.firstLetter() );
+console.log( 'VASDASDASDFDSFS'.firstLetter() );
+
+String.prototype.lastLetter = function () {
+    console.log( this );
+    return this[this.length-1];
+}
+
+console.log( 'afghfgxcvb'.lastLetter() );
+console.log( 'VASDASDASDFDSFS'.lastLetter() );
+
+*/
+
+
+
+/*
 Todo darba aprasancios savybes
 - description
 - deadline
 - status: todo, in-progress, done
 */
 
-let todo_list = [
-
-    {
-        description: 'Pasigaminti kavos',
-        created_on: '2020-05-05 15:01',
-        deadline: '2020-05-06 12:55',
-        status: 'todo'
-    },
-    {
-        description: 'Pravesti paskaita',
-        created_on: '2020-05-05 15:021',
-        deadline: '2020-05-06 12:00',
-        status: 'todo'
-    },
-    {
-        description: 'Pradeti generuoti paskaitos irasus',
-        created_on: '2020-05-05 19:02',
-        deadline: '2020-05-06 17:05',
-        status: 'todo'
-    }
-];
 
 
 //console.log(todo_list);
 
+'use strict'
 
-for (let i=0; i<todo_list.length; i++) {
-    const todo = todo_list[i];
+function renderList( list ) {
+    
+    const listPlace = document.querySelector('.container');
+    let HTML = '';
 
-    const txt = `Darbas kuri reikia padaryti yra ${todo.description} ir ji reikia atlikti iki ${todo.deadline} siuo metu yra busenoje ${todo.status}.`;
-    console.log(txt);
+    for (let i=0; i<list.length; i++) {
+    
+        const todoItem = list[i];
+    
+        HTML +=`
+        <div class="item">
+            <div class="status ${todoItem.status}"></div>
+            <p class="description">${todoItem.description}</p>
+            <div class="deadline">${todoItem.deadline}</div>
+        </div>`;
+    }
+    return listPlace.innerHTML += HTML;
 }
+
+renderList( todo_list );
+
