@@ -57,6 +57,21 @@
         width: 100%;
     }
 
+    .container > .item > .actions {
+        display: inline-block;
+        width: 100%;
+    }
+
+        .container > .actions > .action {
+            display: inline-block;
+            margin:10px 10px;
+            font-size:14px;
+            line-height: 20px;
+            color:#36f;
+            text-decoration: none;
+            cursor:pointer;
+        }
+
 
 
     @media ( min-width:500px) {
