@@ -75,13 +75,52 @@ function renderList( list ) {
             <div class="deadline">${todoItem.deadline}</div>
 
             <div class="actions">
-             <div class="actions remove">Remove</div>     
+                <div class="action remove">Remove</div>     
             </div>
         </div>`;
     }
     return listPlace.innerHTML += HTML; //innerTEXT isveda html
 }
 
+/******************************************
+Render Todo List
+********************************************/
+
 renderList( todo_list );
 
+/******************************************
+Remove Single Todo Items 
+********************************************/
+
+const removeActions = document.querySelectorAll('.item .action.remove');
+
+for ( let i=0; i<removeActions.length; i++){
+    const removeElement = removeActions[i];
+    removeElement.addEventListener('click', actionRemoveTodoItem);
+}
+
+function actionRemoveTodoItem( ){
+    //const parentItem = event.path[2];
+    const parentItem = event.target.closest('.item');
+    parentItem.remove();
+}
+
+/******************************************
+Remove ALL Todo Items 
+********************************************/
+
+const removeAll = document.querySelector('.global-actions > .action.remove');
+
+removeAll.addEventListener('click', actionRemoveAll);
+
+function actionRemoveAll(){
+
+    const allTodoItems = event.target.closest('.container').querySelectorAll('.item');
+    //const parent = event.target.closest('.container');
+    //const allTodoItems = parent.querySelectorAll('.item');
+
+    for ( let i=0; i<allTodoItems.length; i++){
+        allTodoItems[i].remove();
+    }
+}
 
