@@ -20,8 +20,51 @@ body {
     .container > .form {
         display: inline-block;
         grid-area: newTodo;
-        background-color: yellow;
     }
+
+        .container > .form > fieldset{
+            display: inline-block;
+             width:100%;
+            border:none;
+        }
+
+        .form > fieldset > label{
+            display: inline-block;
+             width:100%;
+        }
+
+        .form > fieldset > textarea{
+            display: inline-block;
+             width:100%;
+             min-height:95px;
+             height:95px;
+             max-height:95px;
+             padding:10px;
+             line-height: 25px;
+             font-size: 20px;
+        }
+
+        .form > fieldset > input{
+            display: inline-block;
+             width:100%;
+             padding:10px;
+        }
+
+        .container > .form .actions{
+            display: inline-block;
+             width:100%;
+        }
+
+            .form > .actions > .btn{
+                display: inline-block;
+                background-color: #36f;
+                margin-right: 10px;
+                padding:5px;
+                color:#fff;
+                cursor:pointer;
+                float:left;
+            }
+
     .container > .item {
         display: inline-block;
         padding: 20px 20px 10px;
