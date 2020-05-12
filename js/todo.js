@@ -1,5 +1,9 @@
 'use strict'
 
+/******************************************
+Render Todo List
+********************************************/
+
 function renderList( list ) {
     
     const listPlace = document.querySelector('.container');
@@ -10,7 +14,7 @@ function renderList( list ) {
         const todoItem = list[i];
     
         HTML +=`
-        <div class="item">
+        <div class="item"">
             <div class="status ${todoItem.status}"></div>
             <p class="description">${todoItem.description}</p>
             <div class="deadline">${todoItem.deadline}</div>
@@ -20,12 +24,21 @@ function renderList( list ) {
             </div>
         </div>`;
     }
-    return listPlace.innerHTML += HTML; //innerTEXT isveda html
-}
+    
+    //return listPlace.innerHTML += HTML; // overwrite -> append diff
 
-/******************************************
-Render Todo List
-********************************************/
+    // prie to kas egzistuoja prideti skirtuma
+    return listPlace.insertAdjacentHTML('beforeend', HTML);
+    
+    //return listPlace.innerHTML += HTML; //innerTEXT isveda html
+
+    //Dingsta event listener
+    //return listPlace.innerHTML += HTML;
+    
+    //istrauk teksta + kitas tekstas
+    //listPlace.innerHTML = '';
+    //listPlace.innerHTML = listPlace.innerHTML + HTML;
+}
 
 renderList( todo_list );
 
@@ -100,6 +113,8 @@ function addnewTodoItem(){
         status: 'todo'
     };
 
+    console.log(newTodo);
+
     if ( newTodo.description.length === 0){
         console.error('ERROR: tuscias description');
     }
@@ -108,11 +123,11 @@ function addnewTodoItem(){
         console.error('ERROR: nevalidus deadline');
     }
 
-    todo_list.push( newTodo ) ; 
+    todo_list.push( newTodo ); 
+    renderList( todo_list );
+    return; 
 
-    console.log(todo_list);
-    
-    return;  
+    //console.log(todo_list);
 }
 
 function formatDate( deltaTime = 0 ){

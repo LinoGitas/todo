@@ -42,12 +42,14 @@ body {
              padding:10px;
              line-height: 25px;
              font-size: 20px;
+             margin-bottom: 10px;
         }
 
         .form > fieldset > input{
             display: inline-block;
              width:100%;
              padding:10px;
+             margin-bottom: 10px;
         }
 
         .container > .form .actions{
