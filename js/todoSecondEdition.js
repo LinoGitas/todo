@@ -12,7 +12,7 @@ const DOMformActions = DOMform.querySelector('.actions');
 const DOMformAdd = DOMformActions.querySelector('.btn.add');
 const DOMformClear = DOMformActions.querySelector('.btn.clear');
 
-let DOMitems = null; //DOMcontainer.querySelector('.item');
+let DOMitems = null;
 
 function renderList( list ){
     for ( let i=0; i<list.length; i++){
@@ -89,9 +89,35 @@ function removeTodo( todoIndex ) {
 
 renderList( todo_list );
 
+DOMdeadlineInput.value = formatDate( 86400000 );
+
 BTNremoveAll.addEventListener( 'click', removeAllTodos);
 
-DOMdeadlineInput.value = formatDate( 86400000 );
+DOMformAdd.addEventListener( 'click', createNewTodo);
+
+function createNewTodo() {
+    todo_id++;
+    let newTodo = {
+        id: todo_id,
+        description: DOMtaskTextArea.value.trim(),
+        created_on: formatDate(),
+        deadline: DOMdeadlineInput.value.trim(),
+        status: 'todo'
+    };
+
+    console.log(newTodo);
+
+    if ( newTodo.description.length === 0){
+        console.error('ERROR: tuscias description');
+    }
+
+    if ( newTodo.deadline.length > 0 && (new Date(newTodo.deadline)).toString() === 'Invalid Date' ){
+        console.error('ERROR: nevalidus deadline');
+    }
+
+    todo_list.push( newTodo ); 
+    renderTodoItem( newTodo );
+}
 
 function formatDate( deltaTime = 0 ){
     let now = new Date();
