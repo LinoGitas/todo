@@ -1,5 +1,7 @@
-let todo_id = 4;
 
+/*
+
+let todo_id = 0;
 let todo_list = [
     {
         id:'1',
@@ -30,3 +32,4 @@ let todo_list = [
         status: 'in-progress'
     }
 ];
+*/
